@@ -5,17 +5,17 @@
 * As a user I want to add new quote.
 * As a user I want to add the following details to the quote.
   - Mark up
-  - Labour
+  - Labour =
   - Rate
   - Time
-  - Materials
-  - Miscellaneous / Expenses
+  - Materials =
+  - Miscellaneous / Expenses =
   - Quantity
   - Unit price
   - Total for all units
-  - Client details
-  - Project Scope
-  - Quote date
+  - Client Id =
+  - Project Scope =
+  - Quote date =
   - Valid until
   - Client discount
   - Subtotal before tax
