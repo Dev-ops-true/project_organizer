@@ -26,4 +26,19 @@ feature 'View quotes' do
       # expect(page).not_to have_content('01/09/2021')
     end  
   end  
+
+  feature 'Updating a quote' do
+    scenario 'A user can update a quote' do
+      @quote = Quotes.create(date_created:'01/09/2021', client_id:'1', project_scope:'Project scope to be edited')
+      visit('/quotes')
+      click_button('Edit')
+      expect(current_path).to eq("/quotes/#{@quote.id}/edit")
+
+      fill_in('project_scope', with: "Edited")
+      click_button('Submit')
+
+      expect(current_path).to eq('/quotes')
+      expect(page).to have_content('Edited')
+    end
+  end
 end

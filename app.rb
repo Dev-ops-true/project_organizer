@@ -29,8 +29,18 @@ class ProjectOrg < Sinatra::Base
 
   enable :sessions, :method_override
 
-  post '/quotes/:id' do
+  delete '/quotes/:id' do
     Quotes.delete(id: params[:id])
+    redirect '/quotes'
+  end
+
+  get '/quotes/:id/edit' do
+    @quote = Quotes.find(id: params[:id])
+    erb:"/quotes/edit"
+  end
+
+  patch '/quotes/:id' do
+    Quotes.update(id: params[:id],date_created: params[:date_created], client_id: params[:client_id], project_scope: params[:project_scope])
     redirect '/quotes'
   end
   

@@ -1,13 +1,18 @@
 
   <% @quotes.each do |item| %>
-  <ul>
+  
+  <ul class="quote_item">
     <li><%= item[0] %></li>
     <li><%= item[1] %></li>
     <li><%= item[2] %></li>
     <li><%= item[3] %></li>
+    <form action="/quotes/<%= item[0] %>" method="post">
+      <input type='hidden' name='_method' value='DELETE'/>
+      <input type="submit" value="Delete" />
+    </form>
+    <form action="/quotes/<%= item[0] %>/edit" method="get">
+      <input type="submit" value="Edit" />
+    </form>
   </ul>
-  <form action="/quotes/<%= item[0] %>" method="post">
-    <input type='hidden' name='method' value='DELETE'/>
-    <input type="submit" value="Delete" />
-  </form>
+  
   <% end %>

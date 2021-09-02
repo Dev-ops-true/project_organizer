@@ -1,0 +1,7 @@
+<form action="/quotes/<%= @quote.id %>" method="post"> 
+  <input type="hidden" name="_method" value="PATCH" />
+  <input type="date" name="date_created" value="<%= @quote.date_created %>" >
+  <input type="number" name="client_id" value="<%= @quote.client_id %>">
+  <input type="text" name="project_scope" value="<%= @quote.project_scope %>">
+  <input type="submit" value="Submit" />
+</form>

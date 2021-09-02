@@ -29,4 +29,20 @@ describe Quotes do
     end
   end
 
+  describe '.update' do
+    it 'updates a quote' do
+      persisted_data = persisted_data(id: @quote.id)
+      Quotes.update(id: persisted_data[0], date_created: "23/09/2021", client_id: "-2", project_scope: "Edited")
+      expect(Quotes.all).to eq([[persisted_data[0], "23/09/2021", -2, "Edited"]])
+    end
+  end
+
+  describe '.find' do
+    it 'finds a requested quote' do
+      result = Quotes.find(id: @quote.id)
+
+      expect(result).to be_a(Quotes)
+    end
+  end
+
 end
