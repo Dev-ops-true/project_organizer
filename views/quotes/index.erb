@@ -5,8 +5,9 @@
     <li><%= item[1] %></li>
     <li><%= item[2] %></li>
     <li><%= item[3] %></li>
-    <li><%= item[4] %></li>
-    <li><%= item[5] %></li>
-    <li><%= item[6] %></li>
   </ul>
+  <form action="/quotes/<%= item[0] %>" method="post">
+    <input type='hidden' name='method' value='DELETE'/>
+    <input type="submit" value="Delete" />
+  </form>
   <% end %>
