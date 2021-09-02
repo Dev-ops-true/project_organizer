@@ -1,6 +1,7 @@
 require_relative './lib/quotes'
 require 'sinatra/base'
 require 'sinatra/reloader'
+require './database_connection_setup'
 
 class ProjectOrg < Sinatra::Base
   configure :development do

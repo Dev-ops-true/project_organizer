@@ -2,15 +2,15 @@
   <% @quotes.each do |item| %>
   
   <ul class="quote_item">
-    <li><%= item[0] %></li>
-    <li><%= item[1] %></li>
-    <li><%= item[2] %></li>
-    <li><%= item[3] %></li>
-    <form action="/quotes/<%= item[0] %>" method="post">
+    <li><%= item.id %></li>
+    <li><%= item.date_created %></li>
+    <li><%= item.client_id %></li>
+    <li><%= item.project_scope %></li>
+    <form action="/quotes/<%= item.id %>" method="post">
       <input type='hidden' name='_method' value='DELETE'/>
       <input type="submit" value="Delete" />
     </form>
-    <form action="/quotes/<%= item[0] %>/edit" method="get">
+    <form action="/quotes/<%= item.id %>/edit" method="get">
       <input type="submit" value="Edit" />
     </form>
   </ul>

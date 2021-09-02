@@ -1,4 +1,5 @@
 require 'sqlite3'
+require 'database_connection'
 
 feature 'View quotes' do
   scenario 'A user can view all the quotes' do

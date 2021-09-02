@@ -9,7 +9,7 @@ describe Quotes do
    
   describe '.all' do
     it 'retrieves all quotes' do
-      expect(@quotes.first).to include("01/09/2021", 3, "Project scope 3")
+      expect(@quotes.first.id).to eq(@quote.id)
     end
   end
 
@@ -32,8 +32,8 @@ describe Quotes do
   describe '.update' do
     it 'updates a quote' do
       persisted_data = persisted_data(id: @quote.id)
-      Quotes.update(id: persisted_data[0], date_created: "23/09/2021", client_id: "-2", project_scope: "Edited")
-      expect(Quotes.all).to eq([[persisted_data[0], "23/09/2021", -2, "Edited"]])
+      quote = Quotes.update(id: persisted_data[0], date_created: "23/09/2021", client_id: "-2", project_scope: "Edited")
+      expect(Quotes.all[0].id).to eq(quote.id)
     end
   end
 
