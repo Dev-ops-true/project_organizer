@@ -42,4 +42,13 @@ feature 'View quotes' do
       expect(page).to have_content('Edited')
     end
   end
+
+  feature 'The quote must be filled in completely' do
+    scenario 'quote does not have all the information' do 
+      visit('/quotes/new')
+      fill_in('client_id', with: "11")
+      click_button('Submit')
+      expect(page).to have_content("Please fill in all fields")
+    end
+  end
 end

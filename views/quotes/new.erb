@@ -1,6 +1,10 @@
+<p><%= flash[:notice] %></p>
 <form action="/quotes/new/quote" method="post"> 
-  <input type="date" name="date_created">
+  <input type="hidden" name="date_created" value="<%= @date %>" >
+  <p>Quote Date: <%= @date %></p>
   <input type="number" name="client_id">
   <input type="text" name="project_scope">
   <input type="submit" value="Submit" />
 </form>
+
+

@@ -19,6 +19,12 @@ describe Quotes do
       expect(@quote).to be_a(Quotes)
       expect(@quote.id).to eq(persisted_data[0])
     end
+
+    it 'does not create a new quote if the fields are not filled in' do
+      Quotes.delete(id: @quote.id)
+      Quotes.create(date_created: "02/09/2021", client_id: "3", project_scope: "" )
+      expect(Quotes.all).to be_empty
+    end
   end
 
   describe '.delete' do
