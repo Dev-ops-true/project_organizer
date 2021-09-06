@@ -1,7 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
 <form action="/quotes/<%= @quote.id %>" method="post"> 
   <input type="hidden" name="_method" value="PATCH" />
   <input type="date" name="date_created" value="<%= @quote.date_created %>" >
   <input type="number" name="client_id" value="<%= @quote.client_id %>">
   <input type="text" name="project_scope" value="<%= @quote.project_scope %>">
+  <h2>Labour</h2>
+    <div id="labour_form">
+      <% @counter = 0 %>
+      <% @quote.labour.each do |labour_item| %>
+      <div>
+        <input type="hidden" name="labour_id_<%= @counter %>" value="<%= labour_item.id %>" />
+        <input type="text" name="labour_desc_<%= @counter %>" value="<%= labour_item.description %>" />
+        <input type="number" name="labour_unit_price_<%= @counter %>" value="<%= labour_item.unit_price %>" />
+        <input type="number" name="labour_quantity_<%= @counter %>" value="<%= labour_item.quantity %>" />
+        <input type="number" name="labour_mark_up_<%= @counter %>" value="<%= labour_item.mark_up %>" />
+        <input type="number" name="labour_total_<%= @counter %>" value="<%= labour_item.labour_total %>" />
+      </div>
+      <% @counter += 1 %>
+      <% end %>
+    </div>
+    <button type="button" id="insertRow">Add row</button> 
   <input type="submit" value="Submit" />
 </form>
+
+<img src="../../matrix.png" alt="">
+
+  <script src="../../js.js"></script>
+</body>
+</html> 

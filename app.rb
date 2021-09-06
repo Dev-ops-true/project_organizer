@@ -5,6 +5,7 @@ require 'uri'
 require 'date'
 require_relative './lib/quotes'
 require './database_connection_setup'
+require_relative './lib/labour'
 
 
 class ProjectOrg < Sinatra::Base
@@ -30,13 +31,17 @@ class ProjectOrg < Sinatra::Base
   end
 
   post '/quotes/new/quote' do
+    p params
+    @counter = 0
     @new_quote = Quotes.create(date_created: params['date_created'], client_id: params['client_id'], project_scope: params['project_scope'])
+    Labour.create(params, @new_quote.id)
     flash[:notice] = "Please fill in all fields" unless @new_quote
     @new_quote ? (redirect '/quotes') : (redirect '/quotes/new')
   end
 
   delete '/quotes/:id' do
     Quotes.delete(id: params[:id])
+    Labour.delete(params[:id])
     redirect '/quotes'
   end
 
@@ -46,10 +51,10 @@ class ProjectOrg < Sinatra::Base
   end
 
   patch '/quotes/:id' do
-    Quotes.update(id: params[:id],date_created: params[:date_created], client_id: params[:client_id], project_scope: params[:project_scope])
+    # Quotes.update(id: params[:id],date_created: params[:date_created], client_id: params[:client_id], project_scope: params[:project_scope])
+    Labour.update(params, params[:id])
     redirect '/quotes'
   end
-  
 
   run! if app_file == $0
 end

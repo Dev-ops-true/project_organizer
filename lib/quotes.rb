@@ -1,6 +1,7 @@
 require 'sqlite3'
 require_relative 'database_connection'
 require 'uri'
+require_relative './labour'
 
 class Quotes
 
@@ -21,7 +22,7 @@ class Quotes
         date_created: quote[1],
         client_id: quote[2],
         project_scope: quote[3]
-        ) 
+        )
     end    
   end
 
@@ -64,6 +65,10 @@ class Quotes
       date_created: result[0][1], 
       client_id: result[0][2], 
       project_scope: result[0][3])
+  end
+
+  def labour(labour_class = Labour)
+    labour_class.all(quote_id: id)
   end
 
   private
