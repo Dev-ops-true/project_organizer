@@ -8,12 +8,15 @@
 </head>
 <body>
   <p><%= flash[:notice] %></p>
+
   <form action="/quotes/new/quote" method="post">
+
     <h2>Quote Details</h2>
     <input type="hidden" name="date_created" value="<%= @date %>" >
     <p>Quote Date: <%= @date %></p>
     <input type="number" name="client_id">
     <input type="text" name="project_scope">
+
     <h2>Labour</h2>
     <div id="labour_form">
       <div>
@@ -24,9 +27,27 @@
         <input type="number" name="labour_total_0" placeholder="total" />
       </div>
     </div>
-    <button type="button" id="insertRow">Add row</button>    
-    <input type="submit" value="Submit" />
+    <button type="button" id="insertLabourRow">Add Row</button>    
+
+    <h2>Materials</h2>
+    <div id="materials_form">
+      <div>
+        <input type="text" name="material_desc_0" placeholder="Description" />
+        <input type="number" name="material_unit_price_0" placeholder="unit price" />
+        <input type="number" name="material_quantity_0" placeholder="quantity" />
+        <input type="number" name="material_mark_up_0" placeholder="mark up" />
+        <input type="number" name="material_total_0" placeholder="total" />
+      </div>  
+    </div>
+    <button type="button" id="insertMaterialRow">Add Row</button>  
+
+    <div>
+      <input type="submit" value="Submit" />
+    </div>
+    
+    
   </form>
+
   
   <img src="../../matrix.png" alt="">
 

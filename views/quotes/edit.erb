@@ -9,7 +9,8 @@
 <body>
 <form action="/quotes/<%= @quote.id %>" method="post"> 
   <input type="hidden" name="_method" value="PATCH" />
-  <input type="date" name="date_created" value="<%= @quote.date_created %>" >
+  <input type="hidden" name="date_created" value="<%= @date %>" >
+  <p>Quote Date: <%= @date %></p>
   <input type="number" name="client_id" value="<%= @quote.client_id %>">
   <input type="text" name="project_scope" value="<%= @quote.project_scope %>">
   <h2>Labour</h2>
@@ -27,7 +28,21 @@
       <% @counter += 1 %>
       <% end %>
     </div>
-    <button type="button" id="insertMoreLines">Add Labour</button> 
+    <h2>Materials</h2>
+    <% @material_counter = 0 %>
+      <% @quote.materials.each do |material_item| %>
+      <div>
+        <input type="hidden" name="material_id_<%= @material_counter %>" value="<%= material_item.id %>" />
+        <input type="text" name="material_desc_<%= @material_counter %>" value="<%= material_item.description %>" />
+        <input type="number" name="material_unit_price_<%= @material_counter %>" value="<%= material_item.unit_price %>" />
+        <input type="number" name="material_quantity_<%= @material_counter %>" value="<%= material_item.quantity %>" />
+        <input type="number" name="material_mark_up_<%= @material_counter %>" value="<%= material_item.mark_up %>" />
+        <input type="number" name="material_total_<%= @material_counter %>" value="<%= material_item.material_total %>" />
+      </div>
+      <% @material_counter += 1 %>
+      <% end %>
+  </div>
+    <%# <button type="button" id="insertMoreLines">Add Labour</button>  %>
   <input type="submit" value="Submit" />
 </form>
 
@@ -36,17 +51,28 @@
     <h2>More Labour</h2>
     <div id="labour_form">
       <div>
-        <input type='hidden' name='current_quote_id' value='<%= @quote.id %>' required />
-        <input type="text" name="labour_desc_0" placeholder="Description" required />
-        <input type="number" name="labour_unit_price_0" placeholder="unit price" required />
-        <input type="number" name="labour_quantity_0" placeholder="quantity" required />
-        <input type="number" name="labour_mark_up_0" placeholder="mark up" required />
-        <input type="number" name="labour_total_0" placeholder="total" required />
+        <input type='hidden' name='current_quote_id' value='<%= @quote.id %>'  />
+        <input type="text" name="labour_desc_0" placeholder="Description"  />
+        <input type="number" name="labour_unit_price_0" placeholder="unit price"  />
+        <input type="number" name="labour_quantity_0" placeholder="quantity"  />
+        <input type="number" name="labour_mark_up_0" placeholder="mark up"  />
+        <input type="number" name="labour_total_0" placeholder="total"  />
       </div>
+    </div>
+    <h2>Materials</h2>
+    <div id="materials_form">
+      
+      <div>
+        <input type="text" name="materials_desc_0" placeholder="Description" />
+        <input type="number" name="materials_unit_price_0" placeholder="unit price" />
+        <input type="number" name="materials_quantity_0" placeholder="quantity" />
+        <input type="number" name="materials_mark_up_0" placeholder="mark up" />
+        <input type="number" name="material_total_0" placeholder="total" />
+      </div>  
     </div>    
     <input type="submit" value="Submit Row" />
   </form>
-  </div>
+  
 
 
 <img src="../../matrix.png" alt="">

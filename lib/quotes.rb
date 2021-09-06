@@ -2,6 +2,7 @@ require 'sqlite3'
 require_relative 'database_connection'
 require 'uri'
 require_relative './labour'
+require_relative './materials'
 
 class Quotes
 
@@ -69,6 +70,10 @@ class Quotes
 
   def labour(labour_class = Labour)
     labour_class.all(quote_id: id)
+  end
+
+  def materials(materials_class = Materials)
+    materials_class.all(quote_id: id)
   end
 
   private

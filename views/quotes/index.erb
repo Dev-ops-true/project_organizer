@@ -27,6 +27,19 @@
         <li><%= labour_item.quote_id %></li>
       <% end %>
     </ul>
+
+    <ul>
+      <h2>Materials</h2>
+      <% item.materials.each do |materials_item| %>
+        <li><%= materials_item.id %></li>
+        <li><%= materials_item.description %></li>
+        <li><%= materials_item.unit_price %></li>
+        <li><%= materials_item.quantity %></li>
+        <li><%= materials_item.mark_up %></li>
+        <li><%= materials_item.material_total %></li>
+        <li><%= materials_item.quote_id %></li>
+      <% end %>
+    </ul>
     
   </ul>
   <form action="/quotes/<%= item.id %>" method="post">
