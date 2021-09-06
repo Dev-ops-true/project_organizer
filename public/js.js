@@ -1,5 +1,6 @@
 const addRowBtn = document.getElementById("insertRow");
 const labourForm = document.getElementById("labour_form");
+
 let count = 1;
 
 addRowBtn.addEventListener("click", () => {
@@ -11,7 +12,3 @@ const addLabourLines = () => {
   labourForm.insertAdjacentHTML("beforeend", labourInputs);
   count += 1;
 };
-
-let input = document.createElement("input");
-let div = document.createElement("div");
-div.innerHTML = input;

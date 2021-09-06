@@ -51,9 +51,16 @@ class ProjectOrg < Sinatra::Base
   end
 
   patch '/quotes/:id' do
-    # Quotes.update(id: params[:id],date_created: params[:date_created], client_id: params[:client_id], project_scope: params[:project_scope])
+    Quotes.update(id: params[:id],date_created: params[:date_created], client_id: params[:client_id], project_scope: params[:project_scope])
     Labour.update(params, params[:id])
     redirect '/quotes'
+  end
+
+  post '/labour/extra' do
+    quote_id = params['current_quote_id']
+    Labour.create(params, quote_id)
+   
+    redirect "/quotes/#{quote_id}/edit"
   end
 
   run! if app_file == $0
