@@ -8,6 +8,7 @@
 </head>
 <body>
   <a href="/quotes/new">Add a quote</a>
+  <% p @quotes %>
   <% @quotes.each do |item| %>
   
   <ul class="quote_item">
@@ -38,6 +39,19 @@
         <li><%= materials_item.mark_up %></li>
         <li><%= materials_item.material_total %></li>
         <li><%= materials_item.quote_id %></li>
+      <% end %>
+    </ul>
+
+    <ul>
+      <h2>Expenses</h2>
+      <% item.expenses.each do |expenses_item| %>
+        <li><%= expenses_item.id %></li>
+        <li><%= expenses_item.description %></li>
+        <li><%= expenses_item.unit_price %></li>
+        <li><%= expenses_item.quantity %></li>
+        <li><%= expenses_item.mark_up %></li>
+        <li><%= expenses_item.expense_total %></li>
+        <li><%= expenses_item.quote_id %></li>
       <% end %>
     </ul>
     

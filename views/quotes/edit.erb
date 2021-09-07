@@ -42,6 +42,20 @@
       <% @material_counter += 1 %>
       <% end %>
   </div>
+
+  <h2>Expenses</h2>
+    <% @expense_counter = 0 %>
+      <% @quote.expenses.each do |expense_item| %>
+      <div>
+        <input type="hidden" name="expense_id_<%= @expense_counter %>" value="<%= expense_item.id %>" />
+        <input type="text" name="expense_desc_<%= @expense_counter %>" value="<%= expense_item.description %>" />
+        <input type="number" name="expense_unit_price_<%= @expense_counter %>" value="<%= expense_item.unit_price %>" />
+        <input type="number" name="expense_quantity_<%= @expense_counter %>" value="<%= expense_item.quantity %>" />
+        <input type="number" name="expense_mark_up_<%= @expense_counter %>" value="<%= expense_item.mark_up %>" />
+        <input type="number" name="expense_total_<%= @expense_counter %>" value="<%= expense_item.expense_total %>" />
+      </div>
+      <% @material_counter += 1 %>
+      <% end %>
     <%# <button type="button" id="insertMoreLines">Add Labour</button>  %>
   <input type="submit" value="Submit" />
 </form>
@@ -63,13 +77,26 @@
     <div id="materials_form">
       
       <div>
-        <input type="text" name="materials_desc_0" placeholder="Description" />
-        <input type="number" name="materials_unit_price_0" placeholder="unit price" />
-        <input type="number" name="materials_quantity_0" placeholder="quantity" />
-        <input type="number" name="materials_mark_up_0" placeholder="mark up" />
+        <input type="text" name="material_desc_0" placeholder="Description" />
+        <input type="number" name="material_unit_price_0" placeholder="unit price" />
+        <input type="number" name="material_quantity_0" placeholder="quantity" />
+        <input type="number" name="material_mark_up_0" placeholder="mark up" />
         <input type="number" name="material_total_0" placeholder="total" />
       </div>  
     </div>    
+
+    <h2>Expenses</h2>
+    <div id="expenses_form">
+      
+      <div>
+        <input type="text" name="expense_desc_0" placeholder="Description" />
+        <input type="number" name="expense_unit_price_0" placeholder="unit price" />
+        <input type="number" name="expense_quantity_0" placeholder="quantity" />
+        <input type="number" name="expense_mark_up_0" placeholder="mark up" />
+        <input type="number" name="expense_total_0" placeholder="total" />
+      </div>  
+    </div>  
+
     <input type="submit" value="Submit Row" />
   </form>
   

@@ -7,6 +7,7 @@ require_relative './lib/quotes'
 require './database_connection_setup'
 require_relative './lib/labour'
 require_relative './lib/materials'
+require_relative './lib/expenses'
 
 
 class ProjectOrg < Sinatra::Base
@@ -35,6 +36,7 @@ class ProjectOrg < Sinatra::Base
     @new_quote = Quotes.create(date_created: params['date_created'], client_id: params['client_id'], project_scope: params['project_scope'])
     Labour.create(params, @new_quote.id)
     Materials.create(params, @new_quote.id)
+    Expenses.create(params, @new_quote.id)
     flash[:notice] = "Please fill in all fields" unless @new_quote
     @new_quote ? (redirect '/quotes') : (redirect '/quotes/new')
   end
@@ -43,6 +45,7 @@ class ProjectOrg < Sinatra::Base
     Quotes.delete(id: params[:id])
     Labour.delete(params[:id])
     Materials.delete(params[:id])
+    Expenses.delete(params[:id])
     redirect '/quotes'
   end
 
@@ -56,6 +59,7 @@ class ProjectOrg < Sinatra::Base
     Quotes.update(id: params[:id],date_created: params[:date_created], client_id: params[:client_id], project_scope: params[:project_scope])
     Labour.update(params, params[:id])
     Materials.update(params, params[:id])
+    Expenses.update(params, params[:id])
     redirect '/quotes'
   end
 
@@ -64,8 +68,11 @@ class ProjectOrg < Sinatra::Base
     if params['labour_desc_0'] != ""
       Labour.create(params, quote_id)
     end
-    if params['materials_desc_0'] != ""
+    if params['material_desc_0'] != ""
       Materials.create(params, quote_id)
+    end
+    if params['expense_desc_0'] != ""
+      Expenses.create(params, quote_id)
     end
     redirect "/quotes/#{quote_id}/edit"
   end

@@ -36,10 +36,23 @@
         <input type="number" name="material_unit_price_0" placeholder="unit price" />
         <input type="number" name="material_quantity_0" placeholder="quantity" />
         <input type="number" name="material_mark_up_0" placeholder="mark up" />
-        <input type="number" name="material_total_0" placeholder="total" />
+        <input type="number" name="material_total_0" placeholder="total" value="<%=  %>" />
       </div>  
     </div>
     <button type="button" id="insertMaterialRow">Add Row</button>  
+
+    <h2>Expenses</h2>
+    <div id="expenses_form">
+      <div>
+        <input type="text" name="expense_desc_0" placeholder="Description" />
+        <input type="number" id="expense_unit_price_0" name="expense_unit_price_0" placeholder="unit price" />
+        <input type="number" id="expense_quantity_0" name="expense_quantity_0" placeholder="quantity" />
+        <input type="number" id="expense_mark_up_0" name="expense_mark_up_0" placeholder="mark up" />
+        <input type="number" id="expense_total_0" name="expense_total_0" placeholder="total" />
+        <button type="button" id="calucalte_total">Calc</button>
+      </div>  
+    </div>
+    <button type="button" id="insertExpenseRow">Add Row</button> 
 
     <div>
       <input type="submit" value="Submit" />
@@ -52,6 +65,7 @@
   <img src="../../matrix.png" alt="">
 
   <script src="../../js.js"></script>
+  <script src='../../cal.js'></script>
 </body>
 </html>
 

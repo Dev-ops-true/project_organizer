@@ -3,6 +3,7 @@ require_relative 'database_connection'
 require 'uri'
 require_relative './labour'
 require_relative './materials'
+require_relative './expenses'
 
 class Quotes
 
@@ -74,6 +75,10 @@ class Quotes
 
   def materials(materials_class = Materials)
     materials_class.all(quote_id: id)
+  end
+
+  def expenses(expenses_class = Expenses)
+    expenses_class.all(quote_id: id)
   end
 
   private

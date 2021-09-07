@@ -2,6 +2,8 @@ const addLabourRowBtn = document.getElementById("insertLabourRow");
 const addMaterialRowBtn = document.getElementById("insertMaterialRow");
 const labourForm = document.getElementById("labour_form");
 const materialsForm = document.getElementById("materials_form");
+const expensesForm = document.getElementById("expenses_form");
+const addExpenseRowBtn = document.getElementById("insertExpenseRow");
 
 let labourCount = 1;
 
@@ -32,4 +34,22 @@ const addMaterialLines = () => {
     </div>`;
   materialsForm.insertAdjacentHTML("beforeend", materialsInputs);
   materialCount += 1;
+};
+
+let expenseCount = 1;
+
+addExpenseRowBtn.addEventListener("click", () => {
+  addExpenseLine();
+});
+
+const addExpenseLine = () => {
+  const expenseInputs = `<div>
+      <input type="text" name="expense_desc_${expenseCount}" placeholder="Description" />
+      <input type="number" name="expense_unit_price_${expenseCount}" placeholder="unit price" />
+      <input type="number" name="expense_quantity_${expenseCount}" placeholder="quantity" />
+      <input type="number" name="expense_mark_up_${expenseCount}" placeholder="mark up" />
+      <input type="number" name="expense_total_${expenseCount}" placeholder="total" />
+    </div>`;
+  expensesForm.insertAdjacentHTML("beforeend", expenseInputs);
+  expenseCount += 1;
 };

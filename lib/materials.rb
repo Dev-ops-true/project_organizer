@@ -29,7 +29,7 @@ class Materials
 
   def self.create(items, quote_id)
     @counter = 0
-    while items["materials_desc_#{@counter}"] != nil
+    while items["material_desc_#{@counter}"] != nil
       DatabaseConnection.query("INSERT INTO materials (description, unit_price, quantity, mark_up, material_total, quote_id) 
               VALUES (
                 '#{items["material_desc_#{@counter}"]}', 
